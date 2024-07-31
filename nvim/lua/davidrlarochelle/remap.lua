@@ -31,5 +31,4 @@ vim.keymap.set("n", "<leader><leader>", function()
 end)
 -- Key mapping to go back to the previous buffer
 vim.api.nvim_set_keymap("n", "<leader>bb", "<cmd>b#<CR>", { noremap = true, silent = true })
-vim.keymap.set("i", "jj", "<Esc>")
 vim.api.nvim_set_option("clipboard", "unnamed")

@@ -5,8 +5,24 @@ return {
 		config = function()
 			local config = require("nvim-treesitter.configs")
 			config.setup({
+				ensure_installed = {
+					"vimdoc",
+					"javascript",
+					"typescript",
+					"lua",
+					"rust",
+					"go",
+					"ruby",
+					"jsdoc",
+					"bash",
+                    "terraform",
+				},
+				sync_install = false,
 				auto_install = true,
-				highlight = { enable = true },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
 				indent = { enable = true },
 				endwise = { enable = true },
 			})
@@ -24,17 +40,7 @@ return {
 						"class",
 						"function",
 						"method",
-						-- Add more patterns here
-						-- Note that these can be specific to a filetype
 					},
-				},
-				exact_patterns = {
-					-- Example for a specific filetype with Lua patterns
-					-- If it has a `key` it won't match the `default` pattern
-					-- For example, to only match a pattern exactly as provided here:
-					-- lua = {
-					--     'function', -- This is only exact if `function` is the whole keyword
-					-- },
 				},
 			})
 		end,

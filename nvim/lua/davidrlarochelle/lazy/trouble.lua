@@ -7,7 +7,7 @@ return {
 				icons = false,
 			})
 
-			vim.keymap.set("n", "<leader>ee", function()
+			vim.keymap.set("n", "<leader>dt", function()
 				require("trouble").toggle()
 			end)
 

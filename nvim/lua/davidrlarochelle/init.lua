@@ -3,20 +3,10 @@ require("davidrlarochelle.remap")
 require("davidrlarochelle.lazy_init")
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup("ThePrimeagen", {})
+local Group = augroup("davidrlarochelle", {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
-
-function R(name)
-	require("plenary.reload").reload_module(name)
-end
-
-vim.filetype.add({
-	extension = {
-		templ = "templ",
-	},
-})
 
 autocmd("TextYankPost", {
 	group = yank_group,
@@ -30,7 +20,7 @@ autocmd("TextYankPost", {
 })
 
 autocmd({ "BufWritePre" }, {
-	group = ThePrimeagenGroup,
+	group = Group,
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
@@ -76,11 +66,6 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 vim.g.NERDTreeWinSize = 60
--- Function to check if a buffer is a Telescope prompt
-local function is_telescope_buffer()
-	local ft = vim.bo.filetype
-	return ft == "TelescopePrompt" or ft == "TelescopeResults"
-end
 
 vim.cmd([[
     augroup AutoCloseNERDTree
